@@ -1,0 +1,239 @@
+#header {
+	padding: 15px 0;
+	position: relative;
+	margin-bottom: 20px;
+
+	@include media ('>=tablet') {
+		padding: 25px 0 0;
+		margin-bottom: 40px;
+	}
+
+	.container {
+		@include media ('>=tablet') {
+			position: relative;
+		}
+	}
+
+	.title {
+		color: $braun;
+		margin-top: 10px;
+		display: inline-block;
+		vertical-align: top;
+		font-size: 26px;
+		line-height: 1;
+
+		@include media ('>=tablet') {
+			font-size: 30px;
+			margin-bottom: 22px;
+		}
+	}
+}
+
+.nav {
+	@include media ('<tablet') {
+		@include animate(opacity visibility);
+
+		position: absolute;
+		top: 100%;
+		left: 0;
+		right: 0;
+		opacity: 0;
+		visibility: hidden;
+		z-index: 2;
+
+		.nav-active & {
+			opacity: 1;
+			visibility: visible;
+		}
+	}
+
+	@include media ('>=tablet') {
+		border-radius: 5px;
+		overflow: hidden;
+	}
+}
+
+.navbar {
+	@extend %listreset;
+
+	background-color: $braun;
+	padding: 0;
+
+	@include media ('>=tablet') {
+		padding: 0 13px;
+		display: flex;
+		flex-wrap: wrap;
+		flex: 1 0 auto;
+	}
+
+	a {
+		background-color: $braun;
+		color: $white;
+		padding: 12px 13px;
+		display: block;
+		text-align: center;
+		font-size: 15px;
+		line-height: 1.06666666;
+
+		&:hover,
+		.active & {
+			background-color: darken(saturate($braun, 3.41), 7.25);
+
+			span:after {
+				background-color: transparent;
+			}
+		}
+
+		span {
+			@include animate(background-color);
+
+			@include media ('>=tablet') {
+				position: relative;
+
+				&:after {
+					content: '';
+					position: absolute;
+					left: 0;
+					right: 0;
+					bottom: 0;
+					height: 1px;
+					background-color: $white
+				}
+			}
+		}
+
+		@include media ('>=tablet') {
+			display: inline-block;
+			vertical-align: top;
+		}
+	}
+
+	.callback {
+		padding-top: 15px;
+
+		@include media ('>=tablet') {
+			padding: 0;
+			position: absolute;
+			right: 0;
+			top: 5px;
+			display: flex;
+			align-items: center;
+		}
+
+		a {
+			@include media ('>=tablet') {
+				background-color: transparent;
+				color: $braun;
+			}
+		}
+
+		.btn {
+			@include animate(color background);
+			font-size: 15px;
+
+			@include media ('>=tablet') {
+				padding: 7px 15px;
+				border-radius: 16px;
+				margin: 0 12px 0 0;
+				border: 2px solid $braun;
+			}
+
+			&:hover {
+				@include media ('>=tablet') {
+					background: $braun;
+					color: $white;
+				}
+			}
+		}
+
+		.phone {
+			text-align: center;
+
+			@include media ('>=tablet') {
+				@include animate(color);
+
+				color: $black;
+				font-weight: 700;
+				font-size: 15px;
+				line-height: 1.0666667;
+				padding: 10px;
+			}
+
+			&:hover {
+				@include media ('>=tablet') {
+					color: $braun;
+				}
+			}
+
+			.icon-phone {
+				font-size: 0;
+				vertical-align: text-bottom;
+
+				@include media ('>=tablet') {
+					margin: 0 3px 0 0;
+					font-size: 20px;
+				}
+			}
+		}
+	}
+}
+
+.nav-opener {
+	float: right;
+	width: 40px;
+	height: 40px;
+	position: absolute;
+	top: 10px;
+	right: 10px;
+	border-radius: 3px;
+
+	@include media ('>=tablet') {
+		display: none;
+	}
+
+	&:hover {
+		opacity: .9;
+	}
+
+	.nav-active & {
+		span {
+			opacity: 0;
+		}
+
+		&:before,
+		&:after {
+			transform: rotate(45deg);
+			top: 50%;
+			left: 15%;
+			right: 15%;
+		}
+
+		&:after {
+			transform: rotate(-45deg);
+		}
+	}
+
+	span,
+	&:before,
+	&:after {
+		background: $braun;
+		border-radius: 4px;
+		position: absolute;
+		top: 50%;
+		left: 15%;
+		right: 15%;
+		height: 4px;
+		margin-top: -2px; /* height/2 */
+		transition: all .3s linear;
+	}
+
+	&:before,
+	&:after {
+		content: '';
+		top: 30%;
+	}
+
+	&:after {
+		top: 70%;
+	}
+}

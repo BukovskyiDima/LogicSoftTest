@@ -1,0 +1,50 @@
+#footer {
+  padding-bottom: 20px;
+
+  @include media ('<tablet') {
+    text-align: center;
+  }
+
+  .container {
+    font-size: 14px;
+    line-height: 1.142857;
+
+    @include media ('>=tablet') {
+      display: flex;
+      justify-content: space-between;
+    }
+  }
+
+  .info {
+    margin-bottom: 15px;
+
+    @include media ('>=tablet') {
+      display: flex;
+      margin-bottom: 0;
+    }
+  }
+
+  address {
+    font-style: normal;
+    font-size: 14px;
+    line-height: 1.142857;
+
+    @include media ('>=tablet') {
+      margin-left: 42px;
+    }
+  }
+
+  a {
+    &:hover {
+      color: darken(saturate($braun, 3.41), 7.25);
+
+      &:before {
+        background-color: darken(saturate($braun, 3.41), 7.25);
+      }
+    }
+
+    &:before {
+      background-color: $braun;
+    }
+  }
+}

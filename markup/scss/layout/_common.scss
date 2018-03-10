@@ -1,0 +1,368 @@
+body {
+  font-size: 13px;
+  line-height: 1.307692;
+}
+
+#wrapper {
+  overflow: hidden;
+  min-height: 100vh;
+}
+
+.resize-active {
+  * {
+    transition: none !important;
+  }
+}
+
+h2 {
+  font-size: 22px;
+  line-height: 1;
+}
+
+h3 {
+  font-size: 18px;
+  line-height: 1;
+}
+
+a {
+  @include animate(background);
+
+  text-decoration: none;
+  position: relative;
+
+  &:before {
+    content: '';
+    position: absolute;
+    bottom: 2px;
+    left: 0;
+    right: 0;
+    height: 1px;
+  }
+}
+
+.container {
+  max-width: 960px;
+  padding: 0 10px;
+  margin: 0 auto;
+}
+
+.intro-section {
+  text-align: center;
+  margin-bottom: 15px;
+
+  @include media ('>=tablet') {
+    margin-bottom: 33px;
+  }
+
+  .content-holder {
+    min-height: 290px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    position: relative;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+
+    &:before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: rgba($braun, .5);
+    }
+  }
+
+  h1 {
+    color: $white;
+    font-weight: 800;
+    position: relative;
+    line-height: 1;
+    margin-bottom: 7px;
+    font-size: 28px;
+
+    @include media ('>=tablet') {
+      font-size: 36px;
+    }
+  }
+
+  .subtitle {
+    color: $white;
+    font-weight: 800;
+    position: relative;
+    line-height: 1;
+    font-size: 18px;
+
+    @include media ('>=tablet') {
+      font-size: 24px;
+    }
+  }
+}
+
+.article-section {
+  margin-bottom: 30px;
+
+  .content-holder {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0 -10px;
+    font-size: 13px;
+    line-height: 1.3076923;
+
+    p {
+      margin-bottom: 15px;
+    }
+  }
+
+  article {
+    margin-bottom: 30px;
+  }
+
+  .col {
+    padding: 0 10px;
+
+    @include media ('>=tablet') {
+      width: 33.332%;
+    }
+  }
+
+  .article-list {
+    @extend %listreset;
+
+    padding-top: 8px;
+
+    li {
+      margin-bottom: 16px;
+    }
+  }
+
+  h3,
+  h2{
+    a {
+      @include animate(color);
+
+      &:hover {
+        color: darken(saturate($braun, 3.41), 7.25);
+
+        &:before {
+          background-color: darken(saturate($braun, 3.41), 7.25);
+        }
+      }
+
+      &:before {
+        @include animate(background-color);
+
+        background-color: $braun;
+      }
+    }
+  }
+
+  h2 {
+    font-weight: 800;
+  }
+
+  h3 {
+    font-weight: 500;
+    margin-bottom: 8px;
+  }
+}
+
+.feedback-section {
+  margin-bottom: 36px;
+
+  h2 {
+    font-size: 26px;
+  }
+
+  .blockquote-holder {
+    margin: 0 -10px;
+
+    @include media ('>=tablet') {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+    }
+  }
+
+  blockquote {
+    padding: 0 10px;
+    margin: 0 0 10px;
+
+    @include media ('>=tablet') {
+      margin: 0;
+      width: 50%;
+    }
+
+    .text-holder {
+      padding: 15px 20px;
+      background-color: #faf6f3;
+      font-size: 18px;
+      line-height: 1.1111112;
+      font-style: italic;
+      margin-bottom: 11px;
+
+      p {
+        margin-bottom: 0;
+      }
+    }
+
+    cite {
+      margin-left: 20px;
+      font-style: normal;
+      font-size: 14px;
+      line-height: 1.571429;
+    }
+  }
+}
+
+.popup-holder {
+
+  .popup {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: none;
+    z-index: 8010;
+    background: $white;
+
+    &:before {
+      content:'';
+      position: absolute;
+      top: -9999px;
+      left: -9999px;
+      right: -9999px;
+      bottom: -9999px;
+      background: rgba(235, 235, 235, .9);
+    }
+
+    .content-holder {
+      padding: 20px 35px 25px;
+      position: relative;
+      box-shadow: 0 5px 10px rgba(0, 0, 0, .1);
+      width: 310px;
+
+      @include media ('>=tablet') {
+        width: 460px;
+        padding: 35px 65px;
+      }
+    }
+  }
+
+  h2 {
+    text-align: center;
+    font-size: 24px;
+    line-height: 1;
+    font-weight: 800;
+  }
+
+  .close {
+    width: 16px;
+    height: 16px;
+    display: block;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: transparent;
+
+    &:hover {
+      background-color: transparent;
+    }
+
+    &:before,
+    &:after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      height: 20px;
+      width: 1px;
+      background: $black;
+    }
+
+    &:before {
+      transform: translate(-50%, -50%) rotate(45deg);
+    }
+
+    &:after {
+      transform: translate(-50%, -50%) rotate(-45deg);
+    }
+  }
+
+  .form-validation {
+    .row {
+      display: block;
+      position: relative;
+      margin-bottom: 30px;
+
+      @include media ('>=tablet') {
+        margin-bottom: 10px;
+      }
+    }
+
+    #name-error,
+    #phone-error {
+      background: $braun;
+      color: $white;
+      font-size: 14px;
+      line-height: 1.125;
+      padding: 3px;
+      position: absolute;
+      left: 0;
+      bottom: -25px;
+
+      @include media ('>=tablet') {
+        left: calc(100% + 15px);
+        top: 3px;
+        bottom: auto;
+        white-space: nowrap;
+      }
+
+      &:before {
+
+        @include media ('>=tablet') {
+          content: '';
+          position: absolute;
+          top: 0;
+          right: 100%;
+          border-style: solid;
+          border-width: 0 12px 21px 0;
+          border-color: transparent $braun transparent transparent;
+        }
+      }
+    }
+
+    input,
+    button {
+      width: 100%;
+      height: 40px;
+      border-radius: 4px;
+      outline: none;
+    }
+
+    input {
+      border: 1px solid $gray;
+      font-size: 16px;
+      line-height: 1.125;
+    }
+
+    button {
+      @include animate(background);
+
+      background: $braun;
+      color: $white;
+      border: none;
+      box-shadow: none;
+      font-size: 20px;
+      line-height: 1;
+
+      &:hover {
+        background: darken(saturate($braun, 3.41), 7.25);
+      }
+    }
+  }
+}
